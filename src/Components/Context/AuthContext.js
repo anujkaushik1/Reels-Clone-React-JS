@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 export const AuthContext = React.createContext();
 import {auth} from '../Firebase';
 
-export function AuthProvider(){
+export function AuthProvider([children]){
     const [user, setUser] = useState('');
     const [loading, setLoading] = useState(true);
 
@@ -29,4 +29,19 @@ export function AuthProvider(){
         }
 
     },[])
+
+    const store = {
+        user,
+        signup,
+        login,
+        logout
+    }
+
+    return (
+        <AuthContext value = {store}>
+            {
+                !loading && children
+            }
+        </AuthContext>
+    )
 }
