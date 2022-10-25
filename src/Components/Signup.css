@@ -1,10 +1,11 @@
 .signupWrapper{
     display: flex;
     justify-content: center;
-}
+    
+}   
 
 .signupCard{
-    width: 27vw;
+    width: 30vw;
     margin-top: 5%;
 }
 
