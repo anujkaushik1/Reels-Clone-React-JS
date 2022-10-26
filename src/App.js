@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from './Components/Login';
 import context from './Context';
 import { useState, useEffect } from 'react';
+import Feed from './Components/Feed';
 
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
       <BrowserRouter>
         <context.Provider value={store}>
           <Routes>
+              <Route path='/' element = {<Feed/>}></Route>
               <Route path='/login' element={<Login />} />  {/* yeh saare components AuthProvider ke pass jaegenge as props.children */}
               <Route path='/signup' element={<Signup />} />
             </Routes>
