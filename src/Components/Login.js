@@ -23,8 +23,6 @@ import context from '../Context';
 
 
 export default function Login() {
-    const store = useContext(context);
-    console.log(store);
     const useStyles = makeStyles({
         text1: {
             color: 'grey',
@@ -49,7 +47,8 @@ export default function Login() {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
-    const {login} = useContext(context);
+    const {login, logout} = useContext(context);
+
 
 
     const signInUser = async() =>{
@@ -77,6 +76,9 @@ export default function Login() {
         <div className="loginWrapper">
             <div className="imgcar" style={{ backgroundImage: 'url(' + bg + ')', backgroundSize: 'cover' }}>
                 <div className="car">
+                    
+                    <button onClick={logout}>Loooogottttt</button>
+
                     <CarouselProvider
                         visibleSlides={1}
                         totalSlides={5}
@@ -120,7 +122,7 @@ export default function Login() {
                         <Button size="small" color="primary" fullWidth={true} variant='contained' onClick={signInUser}>
                             Log in
                         </Button>
-                    </CardActions>
+                    </CardActions> 
 
                 </Card>
                 <Card variant='outlined' className={classes.card2}>
