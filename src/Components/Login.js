@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useContext} from 'react';
+import { useContext, useState} from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -11,7 +11,7 @@ import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, Image } from '
 import Alert from '@mui/material/Alert';
 import TextField from '@mui/material/TextField';
 import insta from '../Assets/Instagram.jpg';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import bg from '../Assets/insta.png'
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import img1 from '../Assets/img1.jpg';
@@ -45,6 +45,32 @@ export default function Login() {
     })
 
     const classes = useStyles();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
+    const {login} = useContext(context);
+
+
+    const signInUser = async() =>{
+
+        try {
+            setError('');
+
+            let res = await login(email, password);
+            console.log(res);
+            navigate("/");
+
+        } catch (error) {
+
+            setError(error.message);
+            setTimeout(() => {
+                setError('');
+            }, 2000);
+            
+        }
+
+    }
 
     return (
 
@@ -80,18 +106,18 @@ export default function Login() {
                     </div>
                     <CardContent>
                         {
-                            true && <Alert severity="error">This is an error alert — check it out!</Alert>
+                            error != '' && <Alert severity="error">{error}</Alert>
 
                         }
-                        <TextField id="outlined-basic" label="Email" variant="outlined" fullWidth={true} margin='dense' size='small' />
-                        <TextField id="outlined-basic" label="Password" variant="outlined" fullWidth={true} margin='dense' size='small' />
+                        <TextField id="outlined-basic" label="Email" variant="outlined" fullWidth={true} margin='dense' size='small' value={email} onChange={(e) => setEmail(e.target.value)}/>
+                        <TextField id="outlined-basic" label="Password" variant="outlined" fullWidth={true} margin='dense' size='small' value={password} onChange={(e) => setPassword(e.target.value)}/>
                         <Typography color='primary' className={classes.text2} variant='subtitle1'>
                             Forget Password ?
                         </Typography>
 
                     </CardContent>
                     <CardActions>
-                        <Button size="small" color="primary" fullWidth={true} variant='contained'>
+                        <Button size="small" color="primary" fullWidth={true} variant='contained' onClick={signInUser}>
                             Log in
                         </Button>
                     </CardActions>
