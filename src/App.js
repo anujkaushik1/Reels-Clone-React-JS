@@ -43,7 +43,7 @@ function App() {
       unsub();     // jo event listener attach componentDidMount pr woh hatt jaega
     }
 
-  })
+  },[])
 
   const store = {
     user,
@@ -55,6 +55,9 @@ function App() {
   return (
     <>
       <BrowserRouter>
+      {
+        console.log(loading)
+      }
         <context.Provider value={store}>
           {
             !loading && <Routes>
