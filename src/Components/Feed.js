@@ -1,7 +1,9 @@
 import React, { useEffect, useContext, useState } from 'react'
 import context from '../Context'
 import { database } from './Firebase';
+import Posts from './Posts';
 import UploadFile from './UploadFile'
+
 
 function Feed() {
   const {user} = useContext(context);
@@ -24,6 +26,7 @@ function Feed() {
         <h1>Welcome to feed</h1>
       </div>
       <UploadFile user = {userData}/>
+      <Posts userData = {userData}/>
     </div>
 
   )
