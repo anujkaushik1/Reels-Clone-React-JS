@@ -54,6 +54,7 @@ export default function Signup() {
     try {
       let userObj = await signup(email, password);
       let uid = userObj.user.uid;
+      
 
       sendFileToStorage(uid);
 
