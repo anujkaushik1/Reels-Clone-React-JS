@@ -65,7 +65,7 @@ function App() {
                 <Route path='/' element={<Feed />}></Route>
               </Route>
 
-              <Route path='/login' element={<Login />} />  {/* yeh saare components AuthProvider ke pass jaegenge as props.children */}
+              <Route path='/login' element={<Login />} />  
               <Route path='/signup' element={<Signup />} />
             </Routes>
           }

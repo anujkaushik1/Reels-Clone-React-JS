@@ -1,5 +1,5 @@
 .video-container{
-    height: 80vh;
+    height: 80vh; 
     border-radius: 20px;
     background-color: white;
     overflow: scroll;
@@ -9,4 +9,22 @@
 
 .video-container::-webkit-scrollbar {
     display: none;
+
 }   
+
+.videos{
+    position: relative;
+    
+}
+
+.fa{
+    position: absolute;
+    bottom: 10%;
+    left: 41%;
+}
+
+.fa h4{
+    color: white;
+    margin-top: 2%;
+    margin-left: 8%;
+}
