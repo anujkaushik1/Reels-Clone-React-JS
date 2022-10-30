@@ -28,3 +28,51 @@
     margin-top: 2%;
     margin-left: 8%;
 }
+
+.icon-styling{
+    position: absolute;
+    bottom: 4%;
+    left: 41%;
+}
+
+.like{
+    cursor: pointer;
+    color: #e74c3c;
+}
+
+.unlike{
+    cursor: pointer;
+    color: white;
+}
+
+.chat-styling{
+    color: white;
+    position: absolute;
+    bottom: 4%;
+    left: 61%;   
+}
+
+.modal-container{
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.video-modal{
+    width: 50%;
+    height: 100%;
+}
+
+.modal-video{
+    height: 100%;
+    width: 100%;
+}
+
+.comment-modal{
+    width: 50%;
+    height: 100%;
+}
+
+.modal-video video{
+    height: 84vh;
+}

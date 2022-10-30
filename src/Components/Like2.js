@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { database } from './Firebase';
 
-function Like({ userData, postData }) {
+function Like2({ userData, postData }) {
     const [like, setLike] = useState(null);
 
     useEffect(() => {
@@ -39,9 +39,9 @@ function Like({ userData, postData }) {
                 like !== null ?
                     <>
                         {
-                            like === true ? <FavoriteIcon className='icon-styling like' onClick = {clickLike}/>
+                            like === true ? <FavoriteIcon className='like' onClick = {clickLike}/>
                             :
-                            <FavoriteIcon className='icon-styling unlike'onClick = {clickLike}/>
+                            <FavoriteIcon className='unlike'onClick = {clickLike}/>
                         }
                     </> :
                     <>
@@ -52,4 +52,4 @@ function Like({ userData, postData }) {
     )
 }
 
-export default Like
+export default Like2
