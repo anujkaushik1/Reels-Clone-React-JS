@@ -36,7 +36,7 @@ function Video(props) {
       //   </video>
       // <ReactPlayer clas playing= 'true' width='100%' height='80vh' controls url={props.src} />
       <ReactPlayer
-         className='react-player' url={props.src} controls    
+         className='react-player' url={props.src} controls 
          onEnded={(e)=>ended(e)}      
       />
    )

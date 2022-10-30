@@ -73,6 +73,11 @@
     height: 100%;
 }
 
-.modal-video video{
-    height: 84vh;
+.unlike2{
+    color: black;
+    cursor: pointer;
+}
+
+.card1{
+    height: 100%;
 }
