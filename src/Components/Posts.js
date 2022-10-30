@@ -86,14 +86,14 @@ function Posts({ userData }) {
                                                     <Video src={post.pUrl} className='modal-video' />
                                                 </div>
                                                 <div className='comment-modal'>
-                                                    <Card className='card1'>  
-                                                          
+                                                    <Card className='card1'>
+
                                                     </Card>
-                                                    <Card variant='outlined' style={{marginLeft : '4rem'}}>
-                                                        <Typography style={{display : 'flex', justifyContent : 'center', padding : '0.4rem'}}>{post.likes.length === 0 ? '' : `Liked by ${post.likes.length} users`}</Typography>
-                                                        <div style={{ display: 'flex'}}>
+                                                    <Card variant='outlined' style={{ marginLeft: '4rem' }}>
+                                                        <Typography style={{ display: 'flex', justifyContent: 'center', padding: '0.4rem' }}>{post.likes.length === 0 ? '' : `Liked by ${post.likes.length} users`}</Typography>
+                                                        <div style={{ display: 'flex' }}>
                                                             <Like2 postData={post} userData={userData} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} />
-                                                            <AddComment />
+                                                            <AddComment userData={userData} postData = {post}/>
                                                         </div>
                                                     </Card>
                                                 </div>
