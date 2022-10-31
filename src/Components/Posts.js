@@ -72,8 +72,11 @@ function Posts({ userData }) {
                                             <Avatar src={userData.profileUrl} />
                                             <h4>{userData.fullname}</h4>
                                         </div>
+
+
                                         <Like userData={userData} postData={post} />
                                         <ChatBubbleIcon className="chat-styling" onClick={() => handleClickOpen(post.pId)} />
+
                                         <Dialog
                                             open={open === post.pId}
                                             onClose={handleClose}
@@ -85,26 +88,26 @@ function Posts({ userData }) {
 
                                             {
                                                 open !== null &&
-                                                    <>
-                                                        <div className='modal-container'>
-                                                            <div className='video-modal'>
-                                                                <Video src={post.pUrl} className='modal-video' />
-                                                            </div>
-                                                            <div className='comment-modal'>
-                                                                <Card className='card1'>
-                                                                    <Comments key={idx} postData={post} />
-                                                                </Card>
-                                                                <Card variant='outlined' style={{ marginLeft: '4rem' }}>
-                                                                    <Typography style={{ display: 'flex', justifyContent: 'center', padding: '0.4rem' }}>{post.likes.length === 0 ? '' : `Liked by ${post.likes.length} users`}</Typography>
-                                                                    <div style={{ display: 'flex' }}>
-                                                                        <Like2 postData={post} userData={userData} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} />
-                                                                        <AddComment userData={userData} postData={post} />
-                                                                    </div>
-                                                                </Card>
-                                                            </div>
+                                                <>
+                                                    <div className='modal-container'>
+                                                        <div className='video-modal'>
+                                                            <Video src={post.pUrl} />
                                                         </div>
+                                                        <div className='comment-modal'>
+                                                            <Card className='card1'>
+                                                                <Comments key={idx} postData={post} />
+                                                            </Card>
+                                                            <Card variant='outlined' style={{ marginLeft: '4rem' }}>
+                                                                <Typography style={{ display: 'flex', justifyContent: 'center', padding: '0.4rem' }}>{post.likes.length === 0 ? '' : `Liked by ${post.likes.length} users`}</Typography>
+                                                                <div style={{ display: 'flex' }}>
+                                                                    <Like2 postData={post} userData={userData} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} />
+                                                                    <AddComment userData={userData} postData={post} />
+                                                                </div>
+                                                            </Card>
+                                                        </div>
+                                                    </div>
 
-                                                    </>
+                                                </>
                                             }
 
                                         </Dialog>

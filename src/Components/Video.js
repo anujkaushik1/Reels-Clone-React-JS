@@ -5,6 +5,8 @@ import ReactPlayer from 'react-player/file';
 
 function Video(props) {
 
+ 
+
    const clickMuteUnmute = (e) => {
       console.log('clicked');
       e.preventDefault();
@@ -34,7 +36,7 @@ function Video(props) {
       //   </video>
       // <ReactPlayer clas playing= 'true' width='100%' height='80vh' controls url={props.src} />
       <ReactPlayer
-         className='react-player' url={props.src} controls 
+         className='react-player' url={props.src} controls width={'100%'} height = {'80vh'}
          onEnded={(e)=>ended(e)}      
       />
    )
