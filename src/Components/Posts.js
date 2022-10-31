@@ -19,6 +19,7 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea, CardActions } from '@mui/material';
 import AddComment from './AddComment';
 import Like2 from './Like2';
+import Comments from './Comments';
 
 
 function Posts({ userData }) {
@@ -81,23 +82,31 @@ function Posts({ userData }) {
                                             fullWidth={true}
                                             maxWidth='lg'
                                         >
-                                            <div className='modal-container'>
-                                                <div className='video-modal'>
-                                                    <Video src={post.pUrl} className='modal-video' />
-                                                </div>
-                                                <div className='comment-modal'>
-                                                    <Card className='card1'>
 
-                                                    </Card>
-                                                    <Card variant='outlined' style={{ marginLeft: '4rem' }}>
-                                                        <Typography style={{ display: 'flex', justifyContent: 'center', padding: '0.4rem' }}>{post.likes.length === 0 ? '' : `Liked by ${post.likes.length} users`}</Typography>
-                                                        <div style={{ display: 'flex' }}>
-                                                            <Like2 postData={post} userData={userData} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} />
-                                                            <AddComment userData={userData} postData = {post}/>
+                                            {
+                                                open !== null &&
+                                                    <>
+                                                        <div className='modal-container'>
+                                                            <div className='video-modal'>
+                                                                <Video src={post.pUrl} className='modal-video' />
+                                                            </div>
+                                                            <div className='comment-modal'>
+                                                                <Card className='card1'>
+                                                                    <Comments key={idx} postData={post} />
+                                                                </Card>
+                                                                <Card variant='outlined' style={{ marginLeft: '4rem' }}>
+                                                                    <Typography style={{ display: 'flex', justifyContent: 'center', padding: '0.4rem' }}>{post.likes.length === 0 ? '' : `Liked by ${post.likes.length} users`}</Typography>
+                                                                    <div style={{ display: 'flex' }}>
+                                                                        <Like2 postData={post} userData={userData} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} />
+                                                                        <AddComment userData={userData} postData={post} />
+                                                                    </div>
+                                                                </Card>
+                                                            </div>
                                                         </div>
-                                                    </Card>
-                                                </div>
-                                            </div>
+
+                                                    </>
+                                            }
+
                                         </Dialog>
                                     </div>
 

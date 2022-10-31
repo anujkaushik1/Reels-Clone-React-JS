@@ -5,8 +5,6 @@ import ReactPlayer from 'react-player/file';
 
 function Video(props) {
 
- 
-
    const clickMuteUnmute = (e) => {
       console.log('clicked');
       e.preventDefault();
