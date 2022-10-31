@@ -22,7 +22,10 @@ import context from '../Context';
 import { useContext } from 'react';
 import { makeStyles } from '@mui/styles';
 import insta from '../Assets/Instagram.jpg'
-
+import HomeIcon from '@mui/icons-material/Home';
+import ExploreIcon from '@mui/icons-material/Explore';
+import Avatar from '@mui/material/Avatar';
+      
 const useStyles = makeStyles({
   appbar: {
     backgroundColor: 'white'
@@ -71,6 +74,14 @@ export default function Navbar({ userData }) {
     await logout();
   }
 
+  const exploreClick = () =>{
+    // navigate('https://www.google.com/')    // isme same url ke kisi route pr chla jaega
+
+    let win = window.open('https://www.google.com/', 'blank');
+    win.focus();
+
+  }
+
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -117,29 +128,16 @@ export default function Navbar({ userData }) {
   // className={classes.appbar}*/
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="fixed" className={classes}  >    {/*  yeh bhi kr skte hai style={{backgroundColor : 'white'}} */}
+      <AppBar position="fixed" sx = {{background :'white'}}>    {/*  yeh bhi kr skte hai style={{backgroundColor : 'white'}} */}
         <Toolbar>
-          <div>
-
-              <img src={insta} onClick = {bannerClick} alt="" />
+          <div style={{marginLeft : '5%'}}> 
+            <img src={insta} style={{width : '20vh'}} onClick={bannerClick} alt="" />
           </div>
 
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="error">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-              <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
+          <Box sx={{ display: { xs: 'none', md: 'flex' }, color : 'black', alignItems: 'center', marginRight : '4rem' }}>
+            <HomeIcon onClick = {bannerClick} sx = {{marginRight : '1.5rem', cursor : 'pointer'}} />
+            <ExploreIcon onClick = {exploreClick} sx = {{marginRight : '1rem', cursor : 'pointer'}} />
             <IconButton
               size="large"
               edge="end"
@@ -149,7 +147,7 @@ export default function Navbar({ userData }) {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <AccountCircle />
+              <Avatar src={userData.profileUrl} sx = {{height: '2.5rem'}}/>
             </IconButton>
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>

@@ -91,7 +91,7 @@ function UploadFile(props) {
   }
 
   return (
-    <div>
+    <div style={{marginTop : '5rem', marginBottom : '0.5rem'}}>
 
       {
         error !== '' ? <Alert severity="error">{error}r</Alert> :
