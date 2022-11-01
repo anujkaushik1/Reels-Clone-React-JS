@@ -64,8 +64,8 @@ function App() {
           {
             !loading && <Routes>
               <Route element={<PrivateRoute />}>       {/* protect krdia route ko */}
-                <Route path='/' element={<Feed />}></Route>
                 <Route path='/profile/:id' element={<Profile />} ></Route>
+                <Route path='/' element={<Feed />}></Route>
               </Route>
 
               <Route path='/login' element={<Login />} />
