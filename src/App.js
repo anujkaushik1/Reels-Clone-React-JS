@@ -9,7 +9,7 @@ import { useState, useEffect } from 'react';
 import Feed from './Components/Feed';
 import PrivateRoute from './Components/PrivateRoute';
 import Profile from './Components/Profile';
-
+import Ioa from './Components/Ioa';
 
 function App() {
   const [user, setUser] = useState('');
@@ -56,26 +56,7 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
-        {
-          console.log(loading)
-        }
-        <context.Provider value={store}>
-          {
-            !loading && <Routes>
-              <Route element={<PrivateRoute />}>       {/* protect krdia route ko */}
-                <Route path='/profile/:id' element={<Profile />} ></Route>
-                <Route path='/' element={<Feed />}></Route>
-              </Route>
-
-              <Route path='/login' element={<Login />} />
-              <Route path='/signup' element={<Signup />} />
-            </Routes>
-          }
-
-        </context.Provider>
-      </BrowserRouter>
-
+      <Ioa/>
     </>
 
 
