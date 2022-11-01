@@ -1,43 +1,45 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Video.css'
 import ReactDOM from 'react-dom'
 import ReactPlayer from 'react-player/file';
 
+
 function Video(props) {
 
- 
+   const callback = (enteries) => {
+      enteries.forEach((entry) => {   // entry ke andr purra div hai videos vala
 
-   const clickMuteUnmute = (e) => {
-      console.log('clicked');
-      e.preventDefault();
-      e.target.muted = !e.target.muted
+         let ele = entry.target.childNodes[0];
+         console.log(ele);
+
+         ele.play().then(() => {
+            if (!ele.paused && !entry.isIntersecting) {
+               ele.pause()
+            }
+         })
+
+      })
    }
 
+   let observer = new IntersectionObserver(callback, { threshold: 0.6 });  // 60% visible toh woh intersect kr rha hai
 
-   // const autoNextVideo = (e) => {
-   //    console.log('ended');
-   //    let next = ReactDOM.findDOMNode(e.target).parentNode.nextSibling
-   //    if (next) {
-   //       next.scrollIntoView()
-   //       e.target.muted = true
-   //    }
+   useEffect(() => {
+      const elements = document.querySelectorAll('.react-player');
+      elements.forEach((element) => {
+         observer.observe(element)  // attach krna     })
+      })
 
-   //    console.log(e);
-   // }
 
-   const ended = (e)=>{
-      console.log(e);
-   }
+      return () => {
+         observer.disconnect();
+      }
+
+   }, [props.src])
 
 
    return (
-      //   <video src={props.src} className = 'videos-styling' muted = "muted" onClick={clickMuteUnmute} onEnded = {autoNextVideo} controls>
-
-      //   </video>
-      // <ReactPlayer clas playing= 'true' width='100%' height='80vh' controls url={props.src} />
       <ReactPlayer
-         className='react-player'   url={props.src} controls width={'100%'} height = {'80vh'}
-         onEnded={(e)=>ended(e)}      
+         className='react-player' muted={true} url={props.src} controls width={'100%'} height={'80vh'}
       />
    )
 }

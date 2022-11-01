@@ -56,7 +56,25 @@ function App() {
 
   return (
     <>
-      <Ioa/>
+      <BrowserRouter>
+        {
+          console.log(loading)
+        }
+        <context.Provider value={store}>
+          {
+            !loading && <Routes>
+              <Route element={<PrivateRoute />}>       {/* protect krdia route ko */}
+                <Route path='/profile/:id' element={<Profile />} ></Route>
+                <Route path='/' element={<Feed />}></Route>
+              </Route>
+
+              <Route path='/login' element={<Login />} />
+              <Route path='/signup' element={<Signup />} />
+            </Routes>
+          }
+
+        </context.Provider>
+      </BrowserRouter>
     </>
 
 
