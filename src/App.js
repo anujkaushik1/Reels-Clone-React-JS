@@ -8,6 +8,8 @@ import context from './Context';
 import { useState, useEffect } from 'react';
 import Feed from './Components/Feed';
 import PrivateRoute from './Components/PrivateRoute';
+import Profile from './Components/Profile';
+
 
 function App() {
   const [user, setUser] = useState('');
@@ -43,7 +45,7 @@ function App() {
       unsub();     // jo event listener attach componentDidMount pr woh hatt jaega
     }
 
-  },[])
+  }, [])
 
   const store = {
     user,
@@ -55,17 +57,18 @@ function App() {
   return (
     <>
       <BrowserRouter>
-      {
-        console.log(loading)
-      }
+        {
+          console.log(loading)
+        }
         <context.Provider value={store}>
           {
             !loading && <Routes>
               <Route element={<PrivateRoute />}>       {/* protect krdia route ko */}
                 <Route path='/' element={<Feed />}></Route>
+                <Route path='/profile/:id' element={<Profile />} ></Route>
               </Route>
 
-              <Route path='/login' element={<Login />} />  
+              <Route path='/login' element={<Login />} />
               <Route path='/signup' element={<Signup />} />
             </Routes>
           }
